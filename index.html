@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LuxTransport, LLC | Private Chauffeur Service</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%9A%98%3C/text%3E%3C/svg%3E">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#faf7f2;--surface:#fff;--text:#1a1a1a;--muted:#6b6459;--gold:#9a7424;--line:#e4dccd;--hero:#14110d;--herotext:#f5efe3}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0d0b;--surface:#181613;--text:#f3ede1;--muted:#a69d8c;--gold:#d4a94a;--line:#2d2922;--hero:#050504;--herotext:#f5efe3}}
+:root[data-theme="dark"]{--bg:#0e0d0b;--surface:#181613;--text:#f3ede1;--muted:#a69d8c;--gold:#d4a94a;--line:#2d2922;--hero:#050504;--herotext:#f5efe3}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.6}
+h1,h2,h3{font-weight:400;letter-spacing:.04em;margin:0}
+a{color:inherit}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 6vw;background:var(--hero);color:var(--herotext);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.logo{font-size:1.15rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+nav a{text-decoration:none;margin-left:22px;font:13px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.hero{background:var(--hero);color:var(--herotext);text-align:center;padding:14vh 6vw 12vh}
+.hero h1{font-size:clamp(2rem,6vw,4rem);max-width:15ch;margin:0 auto 18px}
+.hero p{max-width:50ch;margin:0 auto 32px;color:#cfc6b4}
+.btn{display:inline-block;background:var(--gold);color:#14110d;border:0;padding:14px 32px;font:600 13px system-ui,sans-serif;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+section{padding:72px 6vw;max-width:1200px;margin:auto}
+.eyebrow{font:12px system-ui,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+section>h2{font-size:2rem;margin-bottom:36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.card{background:var(--surface);border:1px solid var(--line)}
+.card .art{height:150px;display:flex;align-items:center;justify-content:center;font-size:64px;background:linear-gradient(135deg,var(--hero),#2a2418)}
+.card .body{padding:20px}
+.card h3{font-size:1.2rem;margin-bottom:4px}
+.meta{font:13px system-ui,sans-serif;color:var(--muted)}
+.price{color:var(--gold);font:600 14px system-ui,sans-serif;margin-top:10px}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--hero);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:30px;margin:24px auto 0;border:2px solid var(--gold)}
+.driver{text-align:center}
+.stars{color:var(--gold);letter-spacing:2px}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;background:var(--surface);border:1px solid var(--line);padding:28px}
+label{font:12px system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block}
+input,select,textarea{width:100%;margin-top:6px;padding:12px;background:var(--bg);color:var(--text);border:1px solid var(--line);font:15px system-ui,sans-serif}
+.full{grid-column:1/-1}
+#msg{margin-top:18px;padding:16px;border:1px solid var(--gold);display:none}
+footer{text-align:center;padding:40px 6vw;color:var(--muted);font:13px system-ui,sans-serif;border-top:1px solid var(--line)}
+@media(max-width:600px){nav a{margin-left:12px}.logo{font-size:.95rem}}
+.art.photo{height:auto;aspect-ratio:4/3;background:#000}
+.art img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar{overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+</style>
+</head>
+<body>
+<nav><div class="logo">LuxTransport</div><div><a href="#fleet">Fleet</a><a href="#drivers">Chauffeurs</a><a href="#book">Reserve</a></div></nav>
+
+<header class="hero">
+<div class="eyebrow">Private Chauffeur Service</div>
+<h1>Arrive in absolute style</h1>
+<p>Airport transfers, executive travel, weddings and special occasions, delivered by professional chauffeurs in immaculate vehicles.</p>
+<a class="btn" href="#book">Reserve a ride</a>
+</header>
+
+<section id="fleet">
+<div class="eyebrow">The Fleet</div><h2>Our Vehicles</h2>
+<div class="grid" id="fleetGrid"></div>
+</section>
+
+<section id="drivers">
+<div class="eyebrow">The Team</div><h2>Your Chauffeurs</h2>
+<div class="grid" id="driverGrid"></div>
+</section>
+
+<section id="book">
+<div class="eyebrow">Reservations</div><h2>Book Your Ride</h2>
+<form id="f">
+<div><label>Full name<input name="name" required></label></div>
+<div><label>Phone<input name="phone" type="tel" required></label></div>
+<div><label>Email<input name="email" type="email" required></label></div>
+<div><label>Service<select name="service"><option>Airport transfer</option><option>City ride</option><option>Hourly hire</option><option>Wedding / event</option></select></label></div>
+<div><label>Vehicle<select name="vehicle" id="vSel"></select></label></div>
+<div><label>Chauffeur<select name="driver" id="dSel"></select></label></div>
+<div><label>Date<input name="date" type="date" required></label></div>
+<div><label>Time<input name="time" type="time" required></label></div>
+<div><label>Passengers<input name="pax" type="number" min="1" max="12" value="2"></label></div>
+<div class="full"><label>Pickup address<input name="pickup" required></label></div>
+<div class="full"><label>Drop-off address<input name="dropoff" required></label></div>
+<div class="full"><label>Notes<textarea name="notes" rows="3"></textarea></label></div>
+<div class="full"><button class="btn" type="submit">Request reservation</button></div>
+</form>
+<div id="msg"></div>
+</section>
+
+<footer>© LuxTransport, LLC · Available 24/7 · luxtransportma@gmail.com</footer>
+
+<script>
+var CONTACT_EMAIL="luxtransportma@gmail.com";
+var FORMSPREE_ID=""; // paste your Formspree form ID here (see instructions)
+var FLEET=[
+{img:"images/suburban.jpg",n:"Luxury SUV",m:"2023 Chevrolet Suburban RST",i:"🚙",s:6,p:"From $110/hr"},
+{img:"images/tesla.jpg",n:"Electric Prestige",m:"Tesla Model S Plaid",i:"⚡",s:4,p:"From $100/hr"}];
+var DRIVERS=[
+{img:"images/adriana.jpg",n:"Adriana Moreto",y:12,l:"English, Spanish",r:5,b:"Former hotel concierge driver, known for discretion and punctuality."},
+{img:"images/victor.jpg",n:"Victor Pasols",y:8,l:"English, Spanish, French",r:5,b:"Specialist in airport and executive transfers."},
+{img:"images/fabiano.jpg",n:"Fabiano Maceido",y:15,l:"English",r:5,b:"Event and wedding chauffeur with a flawless safety record."}];
+function imgFail(el,t){var p=el.parentNode;p.className=p.className.replace(" photo","");p.textContent=t;}
+function art(v){
+ if(!v.img)return '<div class="art">'+v.i+'</div>';
+ return '<div class="art photo"><img src="'+v.img+'" alt="'+v.n+'" loading="lazy" onerror="imgFail(this,\''+v.i+'\')"></div>';
+}
+function av(d){
+ var c=d.n.charAt(0);
+ return '<div class="avatar">'+(d.img?'<img src="'+d.img+'" alt="'+d.n+'" loading="lazy" onerror="imgFail(this,\''+c+'\')">':c)+'</div>';
+}
+var fg=document.getElementById("fleetGrid"),dg=document.getElementById("driverGrid"),vs=document.getElementById("vSel"),ds=document.getElementById("dSel");
+FLEET.forEach(function(v){
+ fg.insertAdjacentHTML("beforeend",'<div class="card">'+art(v)+'<div class="body"><h3>'+v.n+'</h3><div class="meta">'+v.m+' · up to '+v.s+' guests</div><div class="price">'+v.p+'</div></div></div>');
+ vs.add(new Option(v.n+" ("+v.m+")",v.n));
+});
+ds.add(new Option("No preference","Any"));
+DRIVERS.forEach(function(d){
+ dg.insertAdjacentHTML("beforeend",'<div class="card driver">'+av(d)+'<div class="body"><h3>'+d.n+'</h3><div class="stars">★★★★★</div><div class="meta">'+d.y+' yrs experience · '+d.l+'</div><p class="meta">'+d.b+'</p></div></div>');
+ ds.add(new Option(d.n,d.n));
+});
+document.querySelector('input[type=date]').min=new Date().toISOString().slice(0,10);
+
+document.getElementById("f").addEventListener("submit",async function(e){
+ e.preventDefault();
+ var form=e.target,btn=form.querySelector("button");
+ var o=Object.fromEntries(new FormData(form).entries());
+ var ref="LT-"+Date.now().toString(36).toUpperCase();
+ o.ref=ref;o._subject="New reservation "+ref;
+ var sent=false;
+ if(FORMSPREE_ID){
+  btn.disabled=true;
+  try{
+   var r=await fetch("https://formspree.io/f/"+FORMSPREE_ID,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(o)});
+   sent=r.ok;
+  }catch(err){}
+  btn.disabled=false;
+ }
+ var box=document.getElementById("msg");box.style.display="block";box.textContent="";
+ if(sent){
+  box.textContent="Thank you, "+o.name+". Your request "+ref+" has been received. We will confirm by phone or email shortly.";
+  form.reset();
+ }else{
+  var body=Object.keys(o).filter(function(k){return k.charAt(0)!=="_"}).map(function(k){return k+": "+o[k]}).join("\n");
+  var link=document.createElement("a");
+  link.href="mailto:"+CONTACT_EMAIL+"?subject="+encodeURIComponent("Reservation "+ref)+"&body="+encodeURIComponent(body);
+  link.textContent="Tap here to send your request by email";
+  box.appendChild(document.createTextNode("Request "+ref+" is ready. "));box.appendChild(link);
+ }
+ box.scrollIntoView({behavior:"smooth",block:"center"});
+});
+</script>
+</body>
+</html>
