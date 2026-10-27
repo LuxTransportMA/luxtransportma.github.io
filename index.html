@@ -103,10 +103,10 @@ var PHONE=""; // your reservation phone number, e.g. "+1 617 555 0123"
  document.querySelectorAll("[data-tel]").forEach(function(a){a.href="tel:"+t;if(!a.classList.contains("btn"))a.textContent=PHONE;});
 })();
 var FLEET=[
-{img:"images/suburban.jpg",n:"Luxury SUV",m:"Suburban",i:"🚙",s:6,p:"From $110/hr"},
+{img:"./images/suburban.jpg",n:"Luxury SUV",m:"Suburban",i:"🚙",s:6,p:"From $110/hr"},
 {img:"images/lyriq.jpg",n:"Electric Prestige",m:"Cadillac Lyriq",i:"⚡",s:4,p:"From $100/hr"}];
 var DRIVERS=[
-{img:"images/adriana.jpg",n:"Adriana Moreto",y:12,l:"Portuguese,English, Spanish",r:5,b:"Former hotel concierge driver, known for discretion and punctuality."},
+{img:".images/adriana.jpg",n:"Adriana Moreto",y:12,l:"Portuguese,English, Spanish",r:5,b:"Former hotel concierge driver, known for discretion and punctuality."},
 {img:"images/victor.jpg",n:"Victor Pasols",y:8,l:"English, Spanish, Portuguese",r:5,b:"Specialist in airport and executive transfers."},
 {img:"images/fabiano.jpg",n:"Fabiano Maceido",y:15,l:"Portuguese,English, Spanish",r:5,b:"Event and wedding chauffeur with a flawless safety record."}];
 function imgFail(el,t){var p=el.parentNode;p.className=p.className.replace(" photo","");p.textContent=t;}
