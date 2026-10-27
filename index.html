@@ -46,6 +46,8 @@ footer{text-align:center;padding:40px 6vw;color:var(--muted);font:13px system-ui
 .art img{width:100%;height:100%;object-fit:cover;display:block}
 .avatar{overflow:hidden}
 .avatar img{width:100%;height:100%;object-fit:cover}
+.reach{margin:0 0 18px;color:var(--muted);font:14px system-ui,sans-serif}
+.reach a{color:var(--gold)}
 </style>
 </head>
 <body>
@@ -56,6 +58,7 @@ footer{text-align:center;padding:40px 6vw;color:var(--muted);font:13px system-ui
 <h1>Arrive in absolute style</h1>
 <p>Airport transfers, executive travel, weddings and special occasions, delivered by professional chauffeurs in immaculate vehicles.</p>
 <a class="btn" href="#book">Reserve a ride</a>
+<a class="btn" data-call data-tel style="display:none;margin:6px">Call to reserve</a>
 </header>
 
 <section id="fleet">
@@ -70,6 +73,7 @@ footer{text-align:center;padding:40px 6vw;color:var(--muted);font:13px system-ui
 
 <section id="book">
 <div class="eyebrow">Reservations</div><h2>Book Your Ride</h2>
+<p class="reach"><span data-call style="display:none">Call <a data-tel></a>, or </span>email <a href="mailto:luxtransportma@gmail.com">luxtransportma@gmail.com</a> to reserve, or use the form below.</p>
 <form id="f">
 <div><label>Full name<input name="name" required></label></div>
 <div><label>Phone<input name="phone" type="tel" required></label></div>
@@ -93,13 +97,18 @@ footer{text-align:center;padding:40px 6vw;color:var(--muted);font:13px system-ui
 <script>
 var CONTACT_EMAIL="luxtransportma@gmail.com";
 var FORMSPREE_ID=""; // paste your Formspree form ID here (see instructions)
+var PHONE=""; // your reservation phone number, e.g. "+1 617 555 0123"
+(function(){var t=PHONE.replace(/[^+\d]/g,"");if(!t)return;
+ document.querySelectorAll("[data-call]").forEach(function(e){e.style.display="inline-block";});
+ document.querySelectorAll("[data-tel]").forEach(function(a){a.href="tel:"+t;if(!a.classList.contains("btn"))a.textContent=PHONE;});
+})();
 var FLEET=[
-{img:"images/suburban.jpg",n:"Luxury SUV",m:"2023 Chevrolet Suburban RST",i:"🚙",s:6,p:"From $110/hr"},
-{img:"images/tesla.jpg",n:"Electric Prestige",m:"Tesla Model S Plaid",i:"⚡",s:4,p:"From $100/hr"}];
+{img:"images/suburban.jpg",n:"Luxury SUV",m:"Suburban",i:"🚙",s:6,p:"From $110/hr"},
+{img:"images/lyriq.jpg",n:"Electric Prestige",m:"Cadillac Lyriq",i:"⚡",s:4,p:"From $100/hr"}];
 var DRIVERS=[
 {img:"images/adriana.jpg",n:"Adriana Moreto",y:12,l:"English, Spanish",r:5,b:"Former hotel concierge driver, known for discretion and punctuality."},
 {img:"images/victor.jpg",n:"Victor Pasols",y:8,l:"English, Spanish, French",r:5,b:"Specialist in airport and executive transfers."},
-{img:"images/fabiano.jpg",n:"Fabiano Macedo",y:15,l:"English",r:5,b:"Event and wedding chauffeur with a flawless safety record."}];
+{img:"images/fabiano.jpg",n:"Fabiano Maceido",y:15,l:"English",r:5,b:"Event and wedding chauffeur with a flawless safety record."}];
 function imgFail(el,t){var p=el.parentNode;p.className=p.className.replace(" photo","");p.textContent=t;}
 function art(v){
  if(!v.img)return '<div class="art">'+v.i+'</div>';
@@ -116,7 +125,7 @@ FLEET.forEach(function(v){
 });
 ds.add(new Option("No preference","Any"));
 DRIVERS.forEach(function(d){
- dg.insertAdjacentHTML("beforeend",'<div class="card driver">'+av(d)+'<div class="body"><h3>'+d.n+'</h3><div class="stars">★★★★★</div><div class="meta">'+d.y+' yrs experience · '+d.l+'</div><p class="meta">'+d.b+'</p></div></div>');
+ dg.insertAdjacentHTML("beforeend",'<div class="card driver">'+av(d)+'<div class="body"><h3>'+d.n+'</h3><div class="stars">★★★★★</div><div class="meta">'+(d.y?d.y+' yrs experience':'')+(d.y&&d.l?' · ':'')+(d.l||'')+'</div><p class="meta">'+d.b+'</p></div></div>');
  ds.add(new Option(d.n,d.n));
 });
 document.querySelector('input[type=date]').min=new Date().toISOString().slice(0,10);
